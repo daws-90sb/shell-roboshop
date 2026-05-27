@@ -38,7 +38,7 @@ do
        --hosted-zone-id $ZONE_ID \
        --change-batch '
             {
-                "comment": "Upate a record to new IP",
+                "Comment": "Upate a record to new IP",
                 "Changes": [
                     {
                         "Action": "UPSERT",
