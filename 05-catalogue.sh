@@ -31,13 +31,18 @@ VALIDATE() {
 
 }
 
-dnf module disable nodejs -y
-dnf module enable nodejs:20 -y
-dnf install nodejs -y
+dnf module disable nodejs -y &>> $LOGS_FILE
+dnf module enable nodejs:20 -y &>> $LOGS_FILE
+dnf install nodejs -y  &>> $LOGS_FILE
 VALIDATE $? "Installing nodejs:20"
 
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-VALIDATE $? "Creating roboshop systemuser"
+id roboshop &>> $LOGS_FILE
+if [ $? -ne 0 ]; then
+    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> $LOGS_FILE $LOGS_FILE
+    VALIDATE $? "Creating roboshop systemuser"
+else 
+    echo "sytem user roboshop already created .....$Y SKIPPING $N"
+fi        
 
-mkdir /app 
+mkdir -p /app  &>> $LOGS_FILE
 VALIDATE $? "Creating App Directory"
