@@ -1,0 +1,155 @@
+#!/bin/bash
+
+{
+    "Reservations": [
+        {
+            "Groups": [],
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "ImageId": "ami-0220d79f3f480ecf5",
+                    "InstanceId": "i-070511786755fe45d",
+                    "InstanceType": "t3.micro",
+                    "LaunchTime": "2026-05-27T09:20:34+00:00",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "us-east-1a",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-172-31-5-98.ec2.internal",
+                    "PrivateIpAddress": "172.31.5.98",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-44-222-246-184.compute-1.amazonaws.com",
+                    "PublicIpAddress": "44.222.246.184",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+                    "SubnetId": "subnet-072d6be31110cdc3a",
+                    "VpcId": "vpc-00120013120d54741",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda1",
+                            "Ebs": {
+                                "AttachTime": "2026-05-23T11:15:41+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-018ac8e6adb1950eb"
+                            }
+                        }
+                    ],
+                    "ClientToken": "bd190042-b802-4e37-931c-7db9653f2b46",
+                    "EbsOptimized": true,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-44-222-246-184.compute-1.amazonaws.com",
+                                "PublicIp": "44.222.246.184"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2026-05-23T11:15:40+00:00",
+                                "AttachmentId": "eni-attach-09b409e08e040829d",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupName": "roboshop-dispatch",
+                                    "GroupId": "sg-057b83c4af794ef8c"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "02:15:5c:10:2f:b1",
+                            "NetworkInterfaceId": "eni-0134cda91a267900a",
+                            "OwnerId": "412541033136",
+                            "PrivateDnsName": "ip-172-31-5-98.ec2.internal",
+                            "PrivateIpAddress": "172.31.5.98",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-44-222-246-184.compute-1.amazonaws.com",
+                                        "PublicIp": "44.222.246.184"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-172-31-5-98.ec2.internal",
+                                    "PrivateIpAddress": "172.31.5.98"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-072d6be31110cdc3a",
+                            "VpcId": "vpc-00120013120d54741",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/sda1",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "roboshop-dispatch",
+                            "GroupId": "sg-057b83c4af794ef8c"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "shell-script"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "optional",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "BootMode": "uefi-preferred",
+                    "PlatformDetails": "Red Hat Enterprise Linux",
+                    "UsageOperation": "RunInstances:0010",
+                    "UsageOperationUpdateTime": "2026-05-23T11:15:40+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": true,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    },
+                    "CurrentInstanceBootMode": "uefi"
+                }
+            ],
+            "OwnerId": "412541033136",
+            "ReservationId": "r-0563bd193b511ec84"
+        }
+    ]
+}
+
+
