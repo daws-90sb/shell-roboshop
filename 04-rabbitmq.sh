@@ -32,7 +32,7 @@ VALIDATE() {
 
 }
 
-cp rabbitmq.repo /etc/yum repos.d/rabbitmq.repo
+cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
 VALIDATE $? "Adding rabbitmq repo"
 
 dnf install rabbitmq-server -y
