@@ -54,12 +54,12 @@ VALIDATE $? "removed catalogue zip"
 mkdir -p /app  &>> $LOGS_FILE
 VALIDATE $? "Creating App Directory"
 
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>> $LOGS_FILE
 cd /app 
-unzip /tmp/catalogue.zip
+unzip /tmp/catalogue.zip &>> $LOGS_FILE
 VALIDATE $? "Downloaded and extracted catalogue code"
 
-npm install 
+npm install  &>> $LOGS_FILE
 VALIDATE $? "Installing Dependencies"
 
 cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
@@ -68,7 +68,23 @@ VALIDATE $? "Created systemctl service"
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "Added Mongo Repo"
 
-dnf install mongodb-mongosh -y
+dnf install mongodb-mongosh -y  &>> $LOGS_FILE
 VALIDATE $? "Installed Mongodb Client"
+
+ INDEX=$(mongosh --host mongodb.daws-90sb.online --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
+
+ if [ $INDEX -lt 0 ]; then
+    mongosh --host mongodb.daws-90sb.online </app/db/master-data.js
+    VALIDATE $? "Load Products"
+else 
+    echo -e " products already loaded....$Y skipping $N "
+fi
+
+systemctl enable catalogue  &>> $LOGS_FILE
+systemctl start catalogue   &>> $LOGS_FILE
+VALIDATE $? " Resarting catalogue "
+
+
+
 
 
