@@ -19,3 +19,14 @@ if [ $# -lt 2 ]; then
 fi    
 
 
+ACTION=$1
+shift # first argument will be removed, so $@ does not have action/destroy
+
+
+destroy
+
+if [ $ACTION -ne "create" ]  && [ $ACTION -ne "delete"]; then
+    echo -e " $R ERROR:: First argument must be either create/delete"
+    echo "USAGE: $0 [create/delete] [instance1] [instance2...]"
+    exit 1
+fi    
