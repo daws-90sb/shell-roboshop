@@ -13,7 +13,7 @@ N="\e[0m"
 
 ### validation error ###
 if [ $# -lt 2 ]; then
-     echo -2 " $R ERROR :: Alteast 2 arguments required $N"
+     echo -2 "$R ERROR :: Alteast 2 arguments required $N"
      echo "USAGE: $0 [create/delete] [instance1] [instance2...]"
      exit 1
 fi    
