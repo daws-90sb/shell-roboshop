@@ -38,11 +38,15 @@ VALIDATE $? "Installing nodejs:20"
 
 id roboshop &>> $LOGS_FILE
 if [ $? -ne 0 ]; then
-    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> $LOGS_FILE $LOGS_FILE
+    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> $LOGS_FILE 
     VALIDATE $? "Creating roboshop systemuser"
 else 
-    echo "sytem user roboshop already created .....$Y SKIPPING $N"
+    echo -e "sytem user roboshop already created .....$Y SKIPPING $N"
 fi        
 
 mkdir -p /app  &>> $LOGS_FILE
 VALIDATE $? "Creating App Directory"
+
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+cd /app 
+unzip /tmp/catalogue.zip
