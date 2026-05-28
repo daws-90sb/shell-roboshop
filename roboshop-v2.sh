@@ -24,8 +24,7 @@ shift # first argument will be removed, so $@ does not have action/destroy
 
 
 
-
-if [ "$ACTION" != "create" ]  && [ "$ACTION" != "delete"]; then
+if [ "$ACTION" != "create" ]  && [ "$ACTION" != "delete" ]; then
     echo -e " $R ERROR:: First argument must be either create/delete $N"
     echo "USAGE: $0 [create/delete] [instance1] [instance2...]"
     exit 1
