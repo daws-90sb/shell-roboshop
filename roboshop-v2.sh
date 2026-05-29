@@ -51,7 +51,7 @@ do
                --query 'Instances[0].InstanceId' \
                --output text
                )
-               echo "lauched Instance : $Instance_ID"
+               echo "launched Instance : $INSTANCE_ID"
 
                    # update route 53 record #
 
