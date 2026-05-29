@@ -52,7 +52,53 @@ do
                --output text
                )
                echo "lauched Instance : $Instance_ID"
-          else
+
+                   # update route 53 record #
+
+                   if [ $instance == "frontend" ]; then 
+                         IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID \
+                         --query 'Reservations[*].Instances[*].PublicIpAddress' \
+                         --output text
+                         )
+                         R53_RECORD="$DOMAIN_NAME"
+
+                    else 
+                         IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID \
+                         --query 'Reservations[*].Instances[*].PrivateIpAddress' \
+                         --output text 
+                         )
+                         R53_RECORD="$instance.$DOMAIN_NAME"
+                    fi  
+
+                     #####  updating R53 Record   ####
+                    aws route53 change-resource-record-sets \
+                    --hosted-zone-id $ZONE_ID \
+                    --change-batch '
+                         {
+                              "Comment": "Upate a record to new IP",
+                              "Changes": [
+                                   {
+                                   "Action": "UPSERT",
+                                   "ResourceRecordSet": {
+                                        "Name": "'$R53_RECORD'",
+                                        "Type": "A",
+                                        "TTL": 300,
+                                        "ResourceRecords": [
+                                             {
+                                                  "Value": "'$IP'"
+                                             }
+                                        ]
+                                   }
+                                   }
+                              ]
+                         }
+                    '  
+                    echo "updated R53 record for : $instance"
+
+         else
                 echo "roboshop-$instance already running: $INSTANCE_ID"     
-     fi   fi
+     
+          fi  
+     fi
+
 done
