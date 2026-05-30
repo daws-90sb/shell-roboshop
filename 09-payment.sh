@@ -54,7 +54,7 @@ VALIDATE $? "removed payment zip"
 mkdir -p /app  &>> $LOGS_FILE
 VALIDATE $? "Creating App Directory"
 
-curl -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip &>> $LOGS_FILE
+curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip &>> $LOGS_FILE
 cd /app 
 unzip /tmp/payment.zip &>> $LOGS_FILE
 VALIDATE $? "Downloaded and extracted payment code"
