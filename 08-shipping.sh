@@ -8,6 +8,7 @@ sudo chown -R ec2-user:ec2-user $LOGS_FOLDER
 sudo chmod -R 755 $LOGS_FOLDER
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 SCRIPT_DIR=$PWD
+MYSQL_HOST=mysql.daws-90sb.online
 
 CARTID=$(id -u)
 R="\e[31m"
@@ -68,10 +69,19 @@ dnf install mysql -y &>> $LOGS_FILE
 VALIDATE $? "Installing mysql client"
 
 
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+mysql -h $MYSQL_HOST -u root  -pRoboShop@1 -e "use cities" &>> $LOGS_FILE
 
-mkdir /app 
+if [ $? -ne 0 ]; then
+    
+   mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/db/schema.sql
+   mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/db/app-user.sql 
+   mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/db/master-data.sql
+   VAIDATE $? "Data Loaded"
+else 
+   echo -e "data already loaded....$Y SKIPPING $N"
 
-
+   systemctl enable shipping 
+   systemctl restart shipping
+   VALIDATE $? "Enabling and Starting Shipping"
 
 
