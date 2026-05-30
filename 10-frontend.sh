@@ -50,7 +50,7 @@ VALIDATE $? "Downloaded and extracted frontend code"
 rm -rf /etc/nginx/nginx.conf
 VALIDATE $? "Removed Default conf"
 
-cp nginx.conf etc/nginx/nginx.conf &>> $LOGS_FILE
+cp nginx.conf /etc/nginx/nginx.conf &>> $LOGS_FILE
 VALIDATE $? "copied roboshop nginx conf"
 
 systemctl restart nginx 
