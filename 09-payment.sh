@@ -63,7 +63,7 @@ cd /app
 pip3 install -r requirements.txt  &>> $LOGS_FILE
 VALIDATE $? "Installing Dependencies"
 
-cp $SCRIPT_DIR/shipping.service /etc/systemd/system/payment.service
+cp $SCRIPT_DIR/payment.service /etc/systemd/system/payment.service
 VALIDATE $? "Created systemctl service"
 
 
