@@ -64,9 +64,8 @@ VALIDATE $? "Installing Dependencies"
 cp $SCRIPT_DIR/shipping.service /etc/systemd/system/shipping.service
 VALIDATE $? "Created systemctl service"
 
-cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
-VALIDATE $? "Added Mongo Repo"
-
+dnf install mysql -y &>> $LOGS_FILE
+VALIDATE $? "Installing mysql client"
 
 
 useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
