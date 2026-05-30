@@ -79,7 +79,7 @@ if [ $? -ne 0 ]; then
    VAIDATE $? "Data Loaded"
 else 
    echo -e "data already loaded....$Y SKIPPING $N"
-
+fi
    systemctl enable shipping 
    systemctl restart shipping
    VALIDATE $? "Enabling and Starting Shipping"
