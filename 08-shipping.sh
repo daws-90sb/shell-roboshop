@@ -83,5 +83,3 @@ else
    systemctl enable shipping 
    systemctl restart shipping
    VALIDATE $? "Enabling and Starting Shipping"
-
-
