@@ -68,6 +68,7 @@ do
                --output text
                )
                echo "launched Instance : $INSTANCE_ID"
+
       
 
          else
