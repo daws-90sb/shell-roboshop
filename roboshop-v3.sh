@@ -33,7 +33,7 @@ fi
 
 ### If all is passed expand to full list ###
 
-if [ "$1" == all ]; then
+if [ "$1" == "all" ]; then
    if [ "$ACTION" == "create" ]; then
       INSTANCES="$ALL_INSTANCES"
    else 
