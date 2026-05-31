@@ -1,4 +1,4 @@
-#!/bi/bash
+#!/bin/bash
 
 
 AMI_ID="ami-0220d79f3f480ecf5"
@@ -31,7 +31,7 @@ if [ "$ACTION" != "create" ]  && [ "$ACTION" != "delete" ]; then
     exit 1
 fi
 
-### If all is passed expand to full list ###
+### If all is passed expand to full list  reversed to delete ###
 
 if [ "$1" == "all" ]; then
    if [ "$ACTION" == "create" ]; then
@@ -52,7 +52,7 @@ get_instance_id(){
 
 }
 
-for instance in $@
+for instance in $INSTANCES
 do
  
     INSTANCE_ID=$(get_instance_id $instance)
